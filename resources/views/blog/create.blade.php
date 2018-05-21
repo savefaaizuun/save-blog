@@ -10,11 +10,11 @@
 				<div class="text-center"><h4>Buat Posts</h4></div>
 				{{csrf_field()}}
 				<div class="form-group">
-					<label>Title:</label>
+					<label for="title">Title:</label>
 					<input type="text" name="title" class="form-control" placeholder="Input title..">
 				</div>
 				<div class="form-group">
-					<label>Content:</label>
+					<label for="content">Content:</label>
 					<textarea type="text" name="content" class="form-control" placeholder="Input Content.."> </textarea>
 				</div>
 				<button type="submit" class="btn btn-success">Save</button>

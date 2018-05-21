@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	//memanggil model post
+	$posts = App\Post::all();
+    return view('welcome')->withPosts($posts);
 });
 
 Route::auth();

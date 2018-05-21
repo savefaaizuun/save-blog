@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Post;
 
+use Validator;
+
 class PostController extends Controller
 {
     /**
@@ -38,13 +40,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|min:5',
+            'content' => 'required',
+        ]);
+
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
 
         $post->save();
 
-        return back();
+        return back()->withInfo('Post baru berhasil di buat..');
+        // return back();
     }
 
     /**
