@@ -64,11 +64,11 @@
                <img class="group list-group-image" src="../images/post1.jpeg" alt="" />
                 <div class="caption">
                     <div class="c_hr">
-                    <h4 class="group inner list-group-item-heading"><a href="#}">{{ $post->title }}</a></h4>
-                         <small> 10 Oktober 2017, 8:25pm</small> | by <a href="#">Admin</a>
+                    <h4 class="group inner list-group-item-heading"><a href="#}">{{ str_limit($post->title, 20)   }}</a></h4>
+                         <small>{{ date('j F Y, h:ia', strtotime($post->created_at)) }}</small> | by <a href="#">Admin</a>
 
                      </div>
-                    <p class="group inner list-group-item-text">{{ $post->content }}</p>
+                    <p class="group inner list-group-item-text">{{ str_limit($post->content, 50) }}</p>
                     <div class="row"></div>
                 </div>
                 
