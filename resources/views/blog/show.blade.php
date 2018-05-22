@@ -1,4 +1,5 @@
 @extends('includes.head')
+@section('title', "$posts->title")
 @section('content')
 <div class="container">
 	<div class="row">

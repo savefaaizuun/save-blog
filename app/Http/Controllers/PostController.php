@@ -47,6 +47,7 @@ class PostController extends Controller
 
         $post = new Post;
         $post->title = $request->title;
+        $post->slug = str_slug($request->title) ;
         $post->content = $request->content;
 
         $post->save();
@@ -61,9 +62,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $posts = Post::find($id);
+        $posts = Post::where('slug','=', $slug)->first();
         return view('blog.show')->withPosts($posts);
     }
 
