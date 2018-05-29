@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Category;
+
 class CategoryController extends Controller
 {
      /**
@@ -37,7 +39,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+    	$this->validate($request, [
+    		'name' => 'required'
+    	]);
+
+        $category = New Category;
+        $category->name = $request->name;
+
+        $category->save();
+
+        return back()->withInfo('Kategori Berhasil dibuat!!!');
+
     }
 
     /**

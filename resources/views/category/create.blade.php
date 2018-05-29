@@ -10,9 +10,10 @@
 
 	<div class="col-md-8 col-md-offset-2">
 		<div class="form-groupm">
-			<form action="" method="post">
+			<form action="{{route('category.store')}}" method="post">
+				{{csrf_field()}}
 				<div class="form-group">
-					<input type="text" name="" class="form-control" placeholder="Buat Kategori Baru ...">
+					<input type="text" name="name" class="form-control" placeholder="Buat Kategori Baru ...">
 				</div>
 
 				<button type="submit" class="btn btn-success btn-block" style="margin-bottom: 20px;"> Save </button>
