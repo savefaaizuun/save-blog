@@ -6,13 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Post;
-
-use Validator;
-
-class PostController extends Controller
+class CategoryController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -29,7 +25,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+    	// echo "masuk";die;
+        return view('category.create');
     }
 
     /**
@@ -40,20 +37,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|min:5',
-            'content' => 'required',
-        ]);
-
-        $posts = new Post;
-        $posts->title = $request->title;
-        $posts->slug = str_slug($posts->title) ;
-        $posts->content = $request->content;
-
-        $posts->save();
-
-        return back()->withInfo('Post baru berhasil di buat..');
-        // return back();
+        
     }
 
     /**
@@ -64,8 +48,7 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $posts = Post::where('slug','=', $slug)->first();
-        return view('blog.show')->withPosts($posts);
+       
     }
 
     /**
@@ -76,8 +59,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $posts = Post::find($id);
-        return view('blog.edit')->withPosts($posts);
+        
     }
 
     /**
@@ -89,18 +71,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required|min:5',
-            'content' => 'required',
-        ]);
-
-        $post = Post::find($id);
-        $post->title = $request->title;
-        $post->content = $request->content;
-
-        $post->save();
-
-        return back()->withInfo('Post berhasil di update..');
+        
     }
 
     /**
