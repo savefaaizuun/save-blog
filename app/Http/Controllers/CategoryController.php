@@ -27,8 +27,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-    	// echo "masuk";die;
-        return view('category.create');
+    	$category = Category::all();
+        return view('category.create')->withCategory($category);
     }
 
     /**
@@ -83,7 +83,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+
+        $category->save();
+
+        return back()->withInfo('Kategori Berhasil di edit!');
     }
 
     /**
